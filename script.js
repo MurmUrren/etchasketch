@@ -32,7 +32,9 @@ function getRandomColor() {
 function initializePen() {
     const squares = document.querySelectorAll(".square");
     squares.forEach((square) => square.addEventListener("mouseover", (e) => {
-            e.target.style.backgroundColor = "Black";
+            if (e.target.id != "selected") {
+                e.target.style.backgroundColor = "Black";
+            };
     }));
 
     squares.forEach((square) => square.addEventListener("mouseout", (e) => {
@@ -48,8 +50,8 @@ function initializePen() {
             e.target.style.opacity = currentOpacity + 0.05;
         }
         e.target.id = "selected"
-
-        e.target.style.backgroundColor = getRandomColor(); 
+        
+        if (e.target.style.opacity < 0.1) e.target.style.backgroundColor = getRandomColor(); 
     }));
 
     squares.forEach((square) => square.addEventListener("auxclick", (e) => {
