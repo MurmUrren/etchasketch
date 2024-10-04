@@ -21,6 +21,14 @@ function createGrids(width, height) {
     initializePen()
 }
 
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+
 function initializePen() {
     const squares = document.querySelectorAll(".square");
     squares.forEach((square) => square.addEventListener("mouseover", (e) => {
@@ -40,6 +48,8 @@ function initializePen() {
             e.target.style.opacity = currentOpacity + 0.05;
         }
         e.target.id = "selected"
+
+        e.target.style.backgroundColor = getRandomColor(); 
     }));
 
     squares.forEach((square) => square.addEventListener("auxclick", (e) => {

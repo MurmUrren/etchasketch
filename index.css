@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     padding: 10px;
-    background-color: pink;
+    background-color: rgb(221, 218, 219);
 }
 
 .grid-wrapper button {
@@ -24,6 +24,3 @@
     box-sizing: border-box;
 }
 
-.square#selected {
-    background-color: black;
-}
