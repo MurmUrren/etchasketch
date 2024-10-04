@@ -1,10 +1,29 @@
+.grid-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: pink;
+}
+
+.grid-wrapper button {
+    align-self: center;
+    margin-left: 10px;
+}
+
 .grid-container{
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 640px;
 }
 .square {
+    background-color: white;
     border: 1px solid black;
     box-sizing: border-box;
+}
+
+.square#selected {
+    background-color: black;
 }

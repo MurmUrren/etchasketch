@@ -17,6 +17,34 @@ function createGrids(width, height) {
         
         gridContainer.append(square)
     } 
+
+    initializePen()
+}
+
+function initializePen() {
+    const squares = document.querySelectorAll(".square");
+    squares.forEach((square) => square.addEventListener("mouseover", (e) => {
+            e.target.style.backgroundColor = "Black";
+    }));
+
+    squares.forEach((square) => square.addEventListener("mouseout", (e) => {
+        if (e.target.id != "selected") {
+            e.target.style.backgroundColor = "White";
+        };
+    }));
+
+    squares.forEach((square) => square.addEventListener("click", (e) => {
+        let currentOpacity = parseFloat(e.target.style.opacity || 0);
+
+        if (currentOpacity < 1){
+            e.target.style.opacity = currentOpacity + 0.05;
+        }
+        e.target.id = "selected"
+    }));
+
+    squares.forEach((square) => square.addEventListener("auxclick", (e) => {
+        e.target.id = ""
+    }));
 }
 
 
@@ -27,11 +55,21 @@ newGridButton.textContent = 'New grid';
 newGridButton.addEventListener("click", () => {
     const squares = document.querySelectorAll(".square");
     squares.forEach((square) => square.remove());
-    width = prompt(`Enter how many squares width`);
-    height = prompt(`Enter how many squares height`);
+
+    do {
+        width = parseInt(prompt(`Enter how many squares width`));
+        height = parseInt(prompt(`Enter how many squares height`));
+
+        if (width > 100 || height > 100) alert("Maximum width or height allowed is 100");
+
+    } while (width > 100 || height > 100);
+    
     createGrids(width, height);
 })
 
-createGrids(16, 16)
+createGrids(16, 16);
+initializePen();
 
-document.body.append(newGridButton);
+
+const gridWrapper = document.querySelector(".grid-wrapper");
+gridWrapper.append(newGridButton);
